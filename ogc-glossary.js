@@ -76,9 +76,9 @@ $(function() {
       return;
     }
     q = q.split(' ');
-    let filter = q.map(t => `REGEX(?label, '(^|\\\\s+)${t}', 'i')`).join(' && ');
+    let filter = q.map(t => `REGEX(?label, '\\\\b${t}', 'i')`).join(' && ');
     if (desc) {
-      let descFilter = q.map(t => `REGEX(?definition, '(^|\\\\s+)${t}')`)
+      let descFilter = q.map(t => `REGEX(?definition, '\\\\b${t}')`)
         .join(' && ');
       filter = `(${filter}) || (${descFilter})`;
     }
