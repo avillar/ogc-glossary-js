@@ -28,6 +28,7 @@ $(function() {
       $terms.empty();
       $searchForm.show();
     } else {
+      $searchForm.hide();
       viewTerms($(this).text());
     }
   });
