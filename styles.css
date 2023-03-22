@@ -53,3 +53,21 @@ h1 {
 .glossary-terms dd {
   margin-bottom: 1em;
 }
+
+.glossary-search {
+  display: flex;
+  max-width: 500px;
+  justify-content: center;
+  gap: 10px;
+  margin: 1em auto;
+}
+
+.glossary-search input {
+  flex: 1;
+}
+
+.search-error {
+  color: #bb0000;
+  text-align: center;
+  margin: 1em 0;
+}
