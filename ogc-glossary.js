@@ -33,7 +33,7 @@ $(function() {
         FILTER (STRSTARTS(UCASE(?label), '${letter}'))
     } ORDER BY (UCASE(?label))`;
     $.post({
-        url: 'http://defs.opengis.net/vocprez/sparql/',
+        url: 'https://defs.opengis.net/vocprez/sparql/',
         headers: {
           'Accept': 'application/sparql-results+json'
         },
