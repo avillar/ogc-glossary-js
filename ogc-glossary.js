@@ -35,6 +35,7 @@ $(function() {
 
   $searchForm.submit(function(e) {
     e.preventDefault();
+    $terms.empty();
     search($searchField.val(), $searchDesc.is(':checked'));
   });
   $searchField.change(function() {
@@ -72,11 +73,12 @@ $(function() {
     q = q.toLowerCase().replaceAll(/[^a-z0-9]+/g, ' ').trim();
     if (q.length < 3) {
       $searchError.show();
+      return;
     }
     q = q.split(' ');
-    let filter = q.map(t => `CONTAINS(LCASE(?label), '${t}')`).join(' && ');
+    let filter = q.map(t => `REGEX(?label, '(^|\\\\s+)${t}', 'i')`).join(' && ');
     if (desc) {
-      let descFilter = q.map(t => `CONTAINS(LCASE(?definition), '${t}')`)
+      let descFilter = q.map(t => `REGEX(?definition, '(^|\\\\s+)${t}')`)
         .join(' && ');
       filter = `(${filter}) || (${descFilter})`;
     }
